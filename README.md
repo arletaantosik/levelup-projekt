@@ -76,7 +76,7 @@ Kompletna konfiguracja znajduje się w screenshotach (4, 5-firewall-policies)
 * deny-database-ports
 * allow-monitoring-stack
 * Startup Script:
-* Skopiuj poniższy kod:
+* Skopiować poniższy kod:
 ```bash
 #!/bin/bash #shebang wskazuje interpretator kodu
 apt update #aktualizuje listę pakietów
