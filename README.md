@@ -22,7 +22,7 @@ Access mode: Multiple VMs read-write
 Size: 50GB
 Snapshot schedule: leave empty (leave to defaults)
 Encryption: Google-managed
-Naciśnij na CREATE
+Naciśnąć na CREATE
 
 Kompletna konfiguracja znajduje się w screenshotach (8-disk)
 
@@ -103,7 +103,12 @@ Kompletna konfiguracja znajduje się w screenshotach (1, 2, 3 instance template)
 ## Krok piąty : Stworzenie VM
 1. Uruchomić Google Compute Engine
 2. Wejść w Instance templates -> projekt11112025 -> Create VM -> Create
-3. Powtórz 2 razy, aby utworzyć 3 VM
-
+3. Powtórzyć 2 razy, aby utworzyć 3 VM
+(screenshot 9-VM)
 ## Krok szósty : Testowanie
-
+1. Sprawdzenie, czy VM działa: wpisać w adres przeglądarki external IP VM (screenshot 10-VM)
+2. Sprawdzenie logów i metryk: uruchomić Compute Engine -> VM Instances -> kliknąć na nazwę VM -> tab "Observability" (11-metrics, 12- logs)
+3. Sprawdzenie stress metrics:
+   1. Wejść do VM klikając na "SSH" przy nazwie
+   2. Wpisać komendę 'sudo apt-get install stress -y'
+   3. Po zainstalowaniu wpisać komendę 'stress --cpu 2 --timeout 120' (screenshot 13-metrics, 14-stress-metrics, 15-stress-metrics)
