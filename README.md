@@ -75,7 +75,7 @@ Kompletna konfiguracja znajduje się w screenshotach (4, 5-firewall-policies)
 * http-server
 * deny-database-ports
 * allow-monitoring-stack
-* Startup Script:
+* Management -> Automation -> Startup Script:
 * Skopiować poniższy kod:
 ```bash
 #!/bin/bash #shebang wskazuje interpretator kodu
@@ -85,6 +85,10 @@ systemctl start apache2 #uruchamia usługę systemową apache2
 systemctl enable apache2 #konfiguruje automatyczne uruchamianie apache2 przy każdym uruchomieniu maszyny
 ```
 Disk: Attach existing disk -> projekt
+3. Nacisnąć Create
+
+Kompletna konfiguracja znajduje się w screenshotach (1, 2, 3 instance template)
+
 ## Krok czwarty : Stworzenie konta Service Account
 1. Uruchomić IAM & ADMIN
 2. Wejść w Service Accounts -> Create service account -> Podać wymagane informacje
@@ -97,9 +101,6 @@ Disk: Attach existing disk -> projekt
 5. Kliknąć na "Done"
 
 Kompletna konfiguracja znajduje się w screenshotach (6,7-IAM)
-
-3. Nacisnąć Create
-Kompletna konfiguracja znajduje się w screenshotach (1, 2, 3 instance template)
 
 ## Krok piąty : Stworzenie VM
 1. Uruchomić Google Compute Engine
