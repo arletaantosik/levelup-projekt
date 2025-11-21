@@ -1,5 +1,5 @@
 # Automated VM Deployment with Startup Script
-Skład grupy: Arleta Antosik, Aleksandra Barbacka, Aleksandra Kaziród, Monika Prądzinska, Marianna Tybura
+Skład grupy: Arleta Antosik, Aleksandra Barbacka, Aleksandra Kaziród, Monika Depka Prądzinska, Marianna Tybura
 ## Cel i zakres projektu
 Cel: Nauczenie się automatyzacji uruchamiania instancji VM z wykorzystaniem startup scriptów, dysków i metadanych.
 Zakres: 
@@ -9,8 +9,6 @@ Zakres:
 * Test działania aplikacji.
 * Konfiguracja reguł firewall i monitoringu.
 ## Krok pierwszy : Stworzenie dysku
-
-![Tworzenie dysku – konfiguracja](./8-disk.png)
 
 1. Uruchomić Google Compute Engine
 2. Wejść w Storage -> Disks -> Create Disk
@@ -28,12 +26,9 @@ Zakres:
 Naciśnąć na CREATE
 
 Kompletna konfiguracja znajduje się w screenshotach (8-disk)
+![Tworzenie dysku – konfiguracja](./8-disk.png)
 
 ## Krok drugi : Stworzenie firewall rules
-
-![Firewall Policy – Rule 1](./4-firewall-policies.png)
-
-![Firewall Policy – Rule 2](./5-firewall-policies.png)
 
 1. Uruchomić Network Security
 2. Wejść w Cloud NGFW -> Firewall policies -> Create a network firewall rule
@@ -67,13 +62,11 @@ Rule 2:
 
 Kompletna konfiguracja znajduje się w screenshotach (4, 5-firewall-policies)
 
+![Firewall Policy – Rule 1](./4-firewall-policies.png)
+
+![Firewall Policy – Rule 2](./5-firewall-policies.png)
+
 ## Krok trzeci : Stworzenie Instance Template ze Startup Script
-
-![Instance Template – część 1](./1-instance-template.png)
-
-![Instance Template – część 2](./2-instance-template.png)
-
-![Instance Template – część 3](./3-instance-template.png)
 
 1. Uruchomić Google Compute Engine
 2. Wejść w Virtual Machines -> Instance templates -> Create instance template -> Podać wymagane informacje
@@ -103,12 +96,13 @@ Disk: Attach existing disk -> projekt
 3. Nacisnąć Create
 
 Kompletna konfiguracja znajduje się w screenshotach (1, 2, 3 instance template)
+![Instance Template – część 1](./1-instance-template.png)
+
+![Instance Template – część 2](./2-instance-template.png)
+
+![Instance Template – część 3](./3-instance-template.png)
 
 ## Krok czwarty : Stworzenie konta Service Account
-
-![IAM – tworzenie Service Account](./6-IAM.png)
-
-![IAM – role przypisane do Service Account](./7-IAM.png)
 
 1. Uruchomić IAM & ADMIN
 2. Wejść w Service Accounts -> Create service account -> Podać wymagane informacje
@@ -121,6 +115,9 @@ Kompletna konfiguracja znajduje się w screenshotach (1, 2, 3 instance template)
 5. Kliknąć na "Done"
 
 Kompletna konfiguracja znajduje się w screenshotach (6,7-IAM)
+![IAM – tworzenie Service Account](./6-IAM.png)
+
+![IAM – role przypisane do Service Account](./7-IAM.png)
 
 ## Krok piąty : Stworzenie VM
 
@@ -128,10 +125,20 @@ Kompletna konfiguracja znajduje się w screenshotach (6,7-IAM)
 2. Wejść w Instance templates -> projekt11112025 -> Create VM -> Create
 3. Powtórzyć 2 razy, aby utworzyć 3 VM
 (screenshot 9-VM)
+![Lista utworzonych VM](./9-VMs.png)
+
 ## Krok szósty : Testowanie
 1. Sprawdzenie, czy VM działa: wpisać w adres przeglądarki external IP VM (screenshot 10-VM)
-2. Sprawdzenie logów i metryk: uruchomić Compute Engine -> VM Instances -> kliknąć na nazwę VM -> tab "Observability" (11-metrics, 12- logs)
-3. Sprawdzenie stress metrics:
+![Widok Apache po wejściu na external IP](./10-VM.png)
+3. Sprawdzenie logów i metryk: uruchomić Compute Engine -> VM Instances -> kliknąć na nazwę VM -> tab "Observability" (11-metrics, 12- logs)
+![Monitoring – metrics](./11-metrics.png)
+![Monitoring – logs](./12-logs.png)
+
+4. Sprawdzenie stress metrics:
    1. Wejść do VM klikając na "SSH" przy nazwie
    2. Wpisać komendę `sudo apt-get install stress -y`
    3. Po zainstalowaniu wpisać komendę `stress --cpu 2 --timeout 120` (screenshot 13-metrics, 14-stress-metrics, 15-stress-metrics)
+![Stress test – CPU wzrost](./13-metrics.png)
+![Stress test – szczegóły 1](./14-stress-metrics.png)
+![Stress test – szczegóły 2](./15-stress-metrics.png)
+
