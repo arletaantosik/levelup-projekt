@@ -9,6 +9,9 @@ Zakres:
 * Test działania aplikacji.
 * Konfiguracja reguł firewall i monitoringu.
 ## Krok pierwszy : Stworzenie dysku
+
+![Tworzenie dysku – konfiguracja](./8-disk.png)
+
 1. Uruchomić Google Compute Engine
 2. Wejść w Storage -> Disks -> Create Disk
 * Name: projekt
@@ -27,6 +30,11 @@ Naciśnąć na CREATE
 Kompletna konfiguracja znajduje się w screenshotach (8-disk)
 
 ## Krok drugi : Stworzenie firewall rules
+
+![Firewall Policy – Rule 1](./4-firewall-policies.png)
+
+![Firewall Policy – Rule 2](./5-firewall-policies.png)
+
 1. Uruchomić Network Security
 2. Wejść w Cloud NGFW -> Firewall policies -> Create a network firewall rule
 3. Stworzyć rules z poniższymi danymi
@@ -60,6 +68,13 @@ Rule 2:
 Kompletna konfiguracja znajduje się w screenshotach (4, 5-firewall-policies)
 
 ## Krok trzeci : Stworzenie Instance Template ze Startup Script
+
+![Instance Template – część 1](./1-instance-template.png)
+
+![Instance Template – część 2](./2-instance-template.png)
+
+![Instance Template – część 3](./3-instance-template.png)
+
 1. Uruchomić Google Compute Engine
 2. Wejść w Virtual Machines -> Instance templates -> Create instance template -> Podać wymagane informacje
 * Name: projekt11112025
@@ -90,6 +105,11 @@ Disk: Attach existing disk -> projekt
 Kompletna konfiguracja znajduje się w screenshotach (1, 2, 3 instance template)
 
 ## Krok czwarty : Stworzenie konta Service Account
+
+![IAM – tworzenie Service Account](./6-IAM.png)
+
+![IAM – role przypisane do Service Account](./7-IAM.png)
+
 1. Uruchomić IAM & ADMIN
 2. Wejść w Service Accounts -> Create service account -> Podać wymagane informacje
    Name: projekt-vm-monitoring-sa
@@ -103,6 +123,7 @@ Kompletna konfiguracja znajduje się w screenshotach (1, 2, 3 instance template)
 Kompletna konfiguracja znajduje się w screenshotach (6,7-IAM)
 
 ## Krok piąty : Stworzenie VM
+
 1. Uruchomić Google Compute Engine
 2. Wejść w Instance templates -> projekt11112025 -> Create VM -> Create
 3. Powtórzyć 2 razy, aby utworzyć 3 VM
