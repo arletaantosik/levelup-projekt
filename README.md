@@ -66,7 +66,25 @@ Kompletna konfiguracja znajduje się w screenshotach (4, 5-firewall-policies)
 
 ![Firewall Policy – Rule 2](./5-firewall-policies.png)
 
-## Krok trzeci : Stworzenie Instance Template ze Startup Script
+## Krok trzeci : Stworzenie konta Service Account
+
+1. Uruchomić IAM & ADMIN
+2. Wejść w Service Accounts -> Create service account -> Podać wymagane informacje
+   Name: projekt-vm-monitoring-sa
+   Description: Service account for VM monitoring and logging
+3. Kliknąć: Create and continue
+4. Dodać w części Permissions poniższe Roles:
+* Logs Writer
+* Monitoring Metric Writer
+5. Kliknąć na "Done"
+
+Kompletna konfiguracja znajduje się w screenshotach (6,7-IAM)
+![IAM – tworzenie Service Account](./6-IAM.png)
+
+![IAM – role przypisane do Service Account](./7-IAM.png)
+
+
+## Krok czwarty : Stworzenie Instance Template ze Startup Script
 
 1. Uruchomić Google Compute Engine
 2. Wejść w Virtual Machines -> Instance templates -> Create instance template -> Podać wymagane informacje
@@ -76,6 +94,7 @@ Kompletna konfiguracja znajduje się w screenshotach (4, 5-firewall-policies)
 * Machine Configuration:
 * Series: N4
 * Machine Type: n4-standard2
+* Identity and API access -> Service accounts -> wybieramy stworzony przez nas service account "projekt-vm-monitoring-sa"
 * Firewall
 * Allow HTTP Traffic
 * Advanced Options
@@ -112,22 +131,6 @@ Kompletna konfiguracja znajduje się w screenshotach (1, 2, 3 instance template)
 
 ![Instance Template – część 3](./3-instance-template.png)
 
-## Krok czwarty : Stworzenie konta Service Account
-
-1. Uruchomić IAM & ADMIN
-2. Wejść w Service Accounts -> Create service account -> Podać wymagane informacje
-   Name: projekt-vm-monitoring-sa
-   Description: Service account for VM monitoring and logging
-3. Kliknąć: Create and continue
-4. Dodać w części Permissions poniższe Roles:
-* Logs Writer
-* Monitoring Metric Writer
-5. Kliknąć na "Done"
-
-Kompletna konfiguracja znajduje się w screenshotach (6,7-IAM)
-![IAM – tworzenie Service Account](./6-IAM.png)
-
-![IAM – role przypisane do Service Account](./7-IAM.png)
 
 ## Krok piąty : Stworzenie VM
 
