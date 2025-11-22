@@ -86,14 +86,24 @@ Kompletna konfiguracja znajduje się w screenshotach (4, 5-firewall-policies)
 * Management -> Automation -> Startup Script:
 * Skopiować poniższy kod:
 ```bash
+#!/bin/bash
+apt update
+apt install -y apache2
+systemctl start apache2
+systemctl enable apache2
+```
+Disk: Attach existing disk -> projekt
+
+3. Nacisnąć Create
+
+Wytłumaczenie kodu:
+```bash
 #!/bin/bash #shebang wskazuje interpretator kodu
 apt update #aktualizuje listę pakietów
 apt install -y apache2 #instaluje pakiet apache2
 systemctl start apache2 #uruchamia usługę systemową apache2
 systemctl enable apache2 #konfiguruje automatyczne uruchamianie apache2 przy każdym uruchomieniu maszyny
 ```
-Disk: Attach existing disk -> projekt
-3. Nacisnąć Create
 
 Kompletna konfiguracja znajduje się w screenshotach (1, 2, 3 instance template)
 ![Instance Template – część 1](./1-instance-template.png)
